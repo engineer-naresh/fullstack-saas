@@ -1,5 +1,5 @@
 const {Sequelize, DataTypes} = require("sequelize")
-const sequelize = new Sequelize("postgresql://postgres.rvqosousksvaocazuqnm:TUKyZ23TFcCkS9uz@aws-1-ap-south-1.pooler.supabase.com:6543/postgres");
+const sequelize = new Sequelize(process.env.DATABASE_URL);
 sequelize.authenticate().then(()=>{
     console.log("Database connection successfull!")
 }).catch((error)=>{
