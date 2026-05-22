@@ -1,5 +1,15 @@
 const { books } = require("../database/connection");
 
+const singleFetchBook = async(request,response)=>{
+    const id =   request.params.id;
+    const book = await books.findByPk(id);
+    response.json({
+        bookName:book.bookName,
+        bookAuthor:book.bookAuthor,
+        bookGenre:book.bookGenre,
+        bookPrice:book.bookPrice
+    })
+};
 const fetchBooks = async(request,response)=>{
     //code logic to retrieve books goes here..
    const datas = await books.findAll(); //findAll() always returns array
@@ -36,4 +46,5 @@ const deleteBook = (req,res)=>{
         message:"Books deleted successfully!"
     });     
 }
-module.exports = {fetchBooks, addBooks, updateBook, deleteBook};
+
+module.exports = {fetchBooks, addBooks, updateBook, deleteBook, singleFetchBook};
