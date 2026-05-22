@@ -7,6 +7,7 @@ const fetchBooks = async(request,response)=>{
         message:"All books shown here",
         datas
     });
+    console.log("fetch books called");
 };
 const addBooks = async(req,res)=>{
     //code logic to add books goes here
