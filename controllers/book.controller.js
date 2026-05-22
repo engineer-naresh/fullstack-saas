@@ -34,13 +34,32 @@ const addBooks = async(req,res)=>{
     message:"Books added successfully!"
 })
 }
-const updateBook = (req,res)=>{
+const updateBook = async(req,res)=>{
+   const id =req.params.id;
+   const {bookName,bookAuthor,bookGenre,bookPrice} =req.body
+    await books.update({
+    bookName,
+    bookAuthor,
+    bookGenre,
+    bookPrice
+   },{
+    where:{
+        id
+    }
+   
+   })
     //code to update books goes here
     res.json({
         message:"Books updated successfully!"
     });
 }
 const deleteBook = (req,res)=>{
+    const id = req.params.id;
+    books.destroy({
+        where:{
+            id
+        }
+    })
     //code to delete books goes here
     res.json({
         message:"Books deleted successfully!"

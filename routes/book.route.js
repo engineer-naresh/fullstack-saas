@@ -2,5 +2,5 @@ const { fetchBooks, addBooks, updateBook, deleteBook, singleFetchBook} = require
 
 const router = require("express").Router();
 router.route('/books').get(fetchBooks).post(addBooks);
-router.route('/books/:id').put(updateBook).delete(deleteBook).get(singleFetchBook);
+router.route('/books/:id').patch(updateBook).delete(deleteBook).get(singleFetchBook);
 module.exports = router;
